@@ -3,402 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Distributor Application | Grupa Wolf Ex-Lighting</title>
-    <meta name="description" content="Apply to become a Grupa Wolf partner. EU and Non-EU tracks available for industrial and Ex-proof lighting distribution.">
-    
-    <!-- SEO & Open Graph -->
-    <meta property="og:title" content="Become a Grupa Wolf Distributor">
-    <meta property="og:description" content="Join a global network of industrial lighting specialists. European engineering, local compliance.">
-    <meta name="keywords" content="Ex-proof lighting, industrial lighting, ATEX, IECEx, distributor application, TSE certification, Turkey market entry">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Project Anatolia | Grupa Wolf Global Partner Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
-            --bg: #050505;
-            --card-bg: #111111;
-            --accent: #00A88E; /* Project Anatolia Teal */
-            --accent-soft: rgba(0, 168, 142, 0.1);
-            --text: #ffffff;
-            --text-dim: #b0b0b0;
-            --border: #222222;
-            --error: #ff4d4d;
+            --bg: #050505; --card: #111111; --accent: #00A88E; --text: #ffffff; --text-dim: #b0b0b0; --border: #222222;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg); 
-            color: var(--text); 
-            line-height: 1.6; 
-            overflow-x: hidden;
-        }
-
-        /* Scannable Layout */
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        section { padding: 100px 0; border-bottom: 1px solid var(--border); }
         
-        h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
-        h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.1; margin-bottom: 20px; }
-        h2 { font-size: 32px; margin-bottom: 40px; color: var(--accent); }
+        /* Language Switcher */
+        .lang-switch { position: fixed; top: 20px; right: 20px; z-index: 1000; background: var(--card); border: 1px solid var(--accent); border-radius: 50px; padding: 5px 15px; }
+        .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-weight: 600; padding: 5px; }
+        .lang-switch button.active { color: var(--accent); }
 
-        /* Hero */
-        .hero { text-align: center; padding: 120px 0 80px; border-bottom: none; }
-        .hero-sub { font-size: 20px; color: var(--text-dim); max-width: 700px; margin: 0 auto 40px; }
-        
-        .credibility-bar { 
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 48px; 
-        }
-        .cred-item { 
-            background: var(--card-bg); border: 1px solid var(--border); 
-            padding: 10px 20px; border-radius: 100px; font-size: 14px; 
-        }
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+        h1 { font-size: clamp(32px, 5vw, 60px); margin-bottom: 20px; background: linear-gradient(90deg, #fff, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { color: var(--accent); margin-bottom: 30px; font-size: 28px; }
 
-        /* Buttons */
-        .btn { 
-            display: inline-block; padding: 16px 32px; border-radius: 8px; 
-            font-weight: 600; text-decoration: none; transition: 0.3s; cursor: pointer; border: none;
-        }
-        .btn-primary { background: var(--accent); color: white; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 168, 142, 0.3); }
-        .btn-secondary { background: transparent; color: white; border: 1px solid var(--border); }
+        /* ROI Calculator Styles */
+        .calc-container { background: linear-gradient(145deg, #111, #050505); padding: 40px; border-radius: 20px; border: 1px solid var(--accent); margin: 40px 0; }
+        .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .input-group { margin-bottom: 20px; }
+        input[type="range"] { width: 100%; accent-color: var(--accent); }
+        .result-box { background: rgba(0, 168, 142, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent); }
+        .total-loss { font-size: 32px; font-weight: 700; color: #ff4d4d; }
 
-        /* Grid Components */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .card { background: var(--card-bg); padding: 32px; border-radius: 16px; border: 1px solid var(--border); }
-        .card h3 { margin-bottom: 12px; font-size: 18px; }
-        .card p, .card li { color: var(--text-dim); font-size: 15px; }
-        .card ul { list-style: none; margin-top: 15px; }
-        .card li::before { content: "→ "; color: var(--accent); }
+        /* Steps Timeline */
+        .steps { display: flex; justify-content: space-between; gap: 20px; margin-top: 40px; }
+        .step-card { background: var(--card); padding: 25px; border-radius: 12px; flex: 1; border: 1px solid var(--border); transition: 0.3s; }
+        .step-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .step-num { width: 30px; height: 30px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; font-weight: bold; }
 
-        /* Form Styling */
-        .form-box { 
-            max-width: 800px; margin: 0 auto; background: var(--card-bg); 
-            padding: 48px; border-radius: 24px; border: 1px solid var(--border); 
-        }
-        .form-section { display: none; }
-        .form-section.active { display: block; animation: fadeIn 0.4s ease; }
-        
-        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
-        input, select, textarea { 
-            width: 100%; padding: 14px; background: #1a1a1a; border: 1px solid var(--border); 
-            border-radius: 8px; color: white; margin-bottom: 20px; font-family: inherit; 
-        }
-        input:focus, textarea:focus { border-color: var(--accent); outline: none; }
-        .helper { font-size: 12px; color: var(--text-dim); margin-top: -15px; margin-bottom: 20px; display: block; }
-
-        .chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
-        .chip { 
-            padding: 8px 16px; background: #1a1a1a; border: 1px solid var(--border); 
-            border-radius: 100px; cursor: pointer; font-size: 13px; transition: 0.2s;
-        }
-        .chip input { display: none; }
-        .chip:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
-
-        /* TSE Section Wedge */
-        .tse-highlight { 
-            background: linear-gradient(90deg, #0a0a0a 0%, #001a16 100%); 
-            border: 1px solid var(--accent); padding: 48px; border-radius: 24px;
-        }
-
-        /* Process Steps */
-        .steps { display: flex; justify-content: space-between; counter-reset: step; }
-        .step { flex: 1; text-align: center; position: relative; padding: 0 10px; }
-        .step::before { 
-            counter-increment: step; content: counter(step); 
-            width: 32px; height: 32px; background: var(--accent); display: flex; 
-            align-items: center; justify-content: center; border-radius: 50%; 
-            margin: 0 auto 15px; font-weight: bold; font-size: 14px;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        @media (max-width: 768px) {
-            .steps { flex-direction: column; gap: 30px; }
-            .form-box { padding: 24px; }
-        }
+        .btn { display: inline-block; padding: 15px 30px; background: var(--accent); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; margin-top: 20px; cursor: pointer; border:none;}
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
+    <div class="lang-switch">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button> | 
+        <button id="btn-tr" onclick="setLang('tr')">TR</button>
+    </div>
+
     <div class="container">
-        <!-- A) HERO -->
-        <section class="hero">
-            <h1 data-track="cta_apply">Become a Grupa Wolf Distributor</h1>
-            <p class="hero-sub">EU & Non‑EU partner application — join the capability layer of industrial lighting distribution. Apply in ~2 minutes.</p>
+        <!-- HERO -->
+        <section style="text-align:center;">
+            <p style="color:var(--accent); letter-spacing: 2px; font-weight: 600;">PROJECT ANATOLIA</p>
+            <h1 id="t-hero-h1">Strategic Market Entry: Türkiye</h1>
+            <p id="t-hero-p" class="hero-sub">European engineering meets local expertise. Apply to become a certified partner.</p>
+            <a href="#apply" class="btn" id="t-btn-apply">Apply to Partner Hub</a>
+        </section>
+
+        <!-- ROI CALCULATOR -->
+        <section id="risk-calc">
+            <h2 id="t-calc-h2">Execution Risk Simulator</h2>
+            <p id="t-calc-p">Calculate the financial impact of "No TSE" compliance in large-scale projects (SOCAR/Tüpraş context).</p>
             
-            <div class="credibility-bar">
-                <span class="cred-item">European Engineering & Mfg</span>
-                <span class="cred-item">Ex-Proof / Hazardous Focus</span>
-                <span class="cred-item">Dedicated Partner Onboarding</span>
-            </div>
-
-            <div style="display: flex; justify-content: center; gap: 16px;">
-                <a href="#apply" class="btn btn-primary">Apply in ~2 minutes</a>
-                <a href="#footer" class="btn btn-secondary">Contact Us</a>
-            </div>
-        </section>
-
-        <!-- B) WHY PARTNER -->
-        <section>
-            <h2>Why partner with us?</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Capability Over Product</h3>
-                    <p>We don't just ship boxes. We provide the technical credibility, compliance fit, and service readiness your clients demand.</p>
-                </div>
-                <div class="card">
-                    <h3>Velocity & Reliability</h3>
-                    <p>In high-stakes industrial environments, lead time is decisive. Our logistics and enablement systems are built for speed.</p>
-                </div>
-                <div class="card">
-                    <h3>Global Onboarding</h3>
-                    <p>Structured training, localized marketing collateral, and a clear pathway to technical mastery of the Ex-lighting portfolio.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- C) PARTNER ARCHETYPES -->
-        <section>
-            <h2>Who we are looking for</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Ex Specialists</h3>
-                    <p>Niche firms focused purely on hazardous areas.</p>
-                </div>
-                <div class="card">
-                    <h3>Broad Distributors</h3>
-                    <p>Industrial "supermarkets" with an Ex portfolio layer.</p>
-                </div>
-                <div class="card">
-                    <h3>OEM / Installers</h3>
-                    <p>Firms integrating lighting into larger industrial packages.</p>
-                </div>
-                <div class="card">
-                    <h3>Adjacent Resellers</h3>
-                    <p>Equipment dealers with established O&G/Chemical access.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- NON-EU / TSE FOCUS SECTION -->
-        <section id="tse-focus">
-            <div class="tse-highlight">
-                <h2 style="color: white; margin-bottom: 20px;">Non‑EU Markets (Türkiye & ME): The TSE Leverage</h2>
-                <p style="color: var(--text-dim); margin-bottom: 30px; max-width: 800px;">
-                    Grupa Wolf is actively evaluating the <strong>TSE (Turkish Standard Institute)</strong> certification pathway. For our Non-EU partners, this is a strategic move to:
-                </p>
-                <div class="grid">
-                    <ul>
-                        <li>Reduce technical objections</li>
-                        <li>Accelerate customs & AVL entry</li>
-                        <li>Improve sellability to SOCAR/Tüpraş tier clients</li>
-                    </ul>
-                    <ul>
-                        <li>TSE recognition vs ATEX/IECEx overlap</li>
-                        <li>Minimized storage (demurrage) costs</li>
-                        <li>Direct local trust accelerator</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- D) APPLICATION FORM -->
-        <section id="apply">
-            <div class="form-box">
-                <form id="wolfForm" action="/submit-distributor-application" method="POST" data-track="form_start">
-                    
-                    <!-- Form Step 1: Context -->
-                    <div class="form-section active" id="step1">
-                        <h2>1. Region & Contact</h2>
-                        <label>Region Track *</label>
-                        <select name="region_track" id="region_track" required onchange="toggleTseField()">
-                            <option value="">Select Region...</option>
-                            <option value="EU">European Union (EU)</option>
-                            <option value="Non-EU">Non-EU (Türkiye, Middle East, etc.)</option>
-                        </select>
-
-                        <label>Countries/Territories Covered *</label>
-                        <input type="text" name="territory" placeholder="e.g. Türkiye, Poland, UAE" required>
-
-                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div>
-                                <label>Company Name *</label>
-                                <input type="text" name="company" required>
-                            </div>
-                            <div>
-                                <label>City/Region *</label>
-                                <input type="text" name="city" required>
-                            </div>
+            <div class="calc-container">
+                <div class="calc-grid">
+                    <div>
+                        <div class="input-group">
+                            <label id="t-label-val">Contract Value (€)</label>
+                            <input type="range" id="contractVal" min="50000" max="1000000" step="50000" value="220000" oninput="calculate()">
+                            <div id="val-display">€220,000</div>
                         </div>
-
-                        <label>Contact Name *</label>
-                        <input type="text" name="contact_name" required>
-
-                        <label>Email *</label>
-                        <input type="email" name="email" required>
-
-                        <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next: Business Profile</button>
-                    </div>
-
-                    <!-- Form Step 2: 5 Core Questions -->
-                    <div class="form-section" id="step2">
-                        <h2>2. Business Capability</h2>
-                        
-                        <label>1. Business Specialization *</label>
-                        <div style="margin-bottom: 20px;">
-                            <label style="font-weight:400;"><input type="radio" name="spec" value="Ex-only" required> Ex-only Specialist</label>
-                            <label style="font-weight:400;"><input type="radio" name="spec" value="Broader"> Part of Broader Portfolio</label>
-                            <label style="font-weight:400;"><input type="radio" name="spec" value="OEM"> Installer / OEM</label>
-                        </div>
-
-                        <label>2. Competitive Landscape & Sample Pricing</label>
-                        <textarea name="q2_competitive" rows="3" placeholder="Which brands do you represent or compete with?"></textarea>
-                        <span class="helper">Optional but strongly recommended for faster evaluation.</span>
-
-                        <label>3. Marketing Approach *</label>
-                        <textarea name="q3_marketing" rows="3" required placeholder="How will you actively promote Grupa Wolf (Channels, LinkedIn, Tenders, Events)?"></textarea>
-
-                        <label>4. Resources & Investment *</label>
-                        <div style="margin-bottom: 20px;">
-                            <label style="font-weight:400;"><input type="checkbox" name="res" value="web"> List Grupa Wolf on website/catalog</label><br>
-                            <label style="font-weight:400;"><input type="checkbox" name="res" value="mkt"> Invest ~€1,000/year in local marketing</label><br>
-                            <label style="font-weight:400;"><input type="checkbox" name="res" value="spare"> Local spare-parts storage/plan</label>
-                        </div>
-
-                        <button type="button" class="btn btn-secondary" onclick="nextStep(1)">Back</button>
-                        <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next: Market Intelligence</button>
-                    </div>
-
-                    <!-- Form Step 3: Market Intelligence -->
-                    <div class="form-section" id="step3">
-                        <h2>3. Selection Triggers</h2>
-                        
-                        <label>5. In your market, what are the primary "selection triggers" for buyers? *</label>
-                        <p class="helper" style="margin-top:0">Rank the drivers that cause buyers to award business (Select top drivers):</p>
-                        <div class="chip-group">
-                            <label class="chip"><input type="checkbox" name="trigger" value="Lead Time"> Lead Time</label>
-                            <label class="chip"><input type="checkbox" name="trigger" value="Price"> Price</label>
-                            <label class="chip"><input type="checkbox" name="trigger" value="Certification"> Compliance/Cert</label>
-                            <label class="chip"><input type="checkbox" name="trigger" value="Trust"> Brand Trust</label>
-                            <label class="chip"><input type="checkbox" name="trigger" value="Relationship"> Relationships</label>
-                            <label class="chip"><input type="checkbox" name="trigger" value="Support"> Service Readiness</label>
-                        </div>
-
-                        <label>Explain the #1 driver with a concrete example *</label>
-                        <textarea name="q5_explanation" rows="3" required></textarea>
-
-                        <div id="tse_notes_container" style="display:none;">
-                            <label>TSE / Certification Notes</label>
-                            <textarea name="tse_notes" rows="2" placeholder="Specific insights on local certification needs..."></textarea>
-                            <span class="helper">Strongly encouraged for Non-EU applicants.</span>
-                        </div>
-
-                        <label style="font-weight:400; font-size: 13px; margin-top: 20px;">
-                            <input type="checkbox" required> I consent to the storage of this data for the purpose of partner pre-qualification.
-                        </label>
-
-                        <div style="margin-top: 30px;">
-                            <button type="button" class="btn btn-secondary" onclick="nextStep(2)">Back</button>
-                            <button type="submit" class="btn btn-primary" data-track="form_submit">Submit Application</button>
+                        <div class="input-group">
+                            <label id="t-label-days">Customs/Testing Delay (Days)</label>
+                            <input type="range" id="delayDays" min="0" max="30" step="1" value="10" oninput="calculate()">
+                            <div id="day-display">10 Days</div>
                         </div>
                     </div>
-                </form>
-
-                <div id="success-msg" style="display:none; text-align: center;">
-                    <h2 style="color: var(--accent);">Application Sent</h2>
-                    <p>Thank you. A Grupa Wolf representative will review your profile and contact you within 3-5 business days.</p>
+                    <div class="result-box">
+                        <p id="t-potential-loss">Estimated Financial Risk (No TSE):</p>
+                        <div class="total-loss" id="total-loss">€0</div>
+                        <p style="font-size: 12px; margin-top: 15px; color: var(--text-dim);" id="t-calc-note">
+                            *Includes Liquidated Damages (0.5%/day), Demurrage, and Red Channel Fees based on Slide 8 analysis.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- E) FUNNEL / PROCESS -->
+        <!-- PROCESS -->
         <section>
-            <h2 style="text-align:center;">Our Onboarding Funnel</h2>
+            <h2 id="t-process-h2">Partner Onboarding Funnel</h2>
             <div class="steps">
-                <div class="step">
-                    <h3>Apply</h3>
-                    <p>5-question pre-qualification</p>
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h3 id="t-s1-h">Digital Audit</h3>
+                    <p id="t-s1-p">Pre-qualification based on business specialization and marketing readiness.</p>
                 </div>
-                <div class="step">
-                    <h3>Review</h3>
-                    <p>Analysis by Region Desk</p>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h3 id="t-s2-h">Strategic Call</h3>
+                    <p id="t-s2-p">Alignment on TSE roadmap and industrial targets (O&G, Chemical).</p>
                 </div>
-                <div class="step">
-                    <h3>Intro Call</h3>
-                    <p>15-30 min fit alignment</p>
-                </div>
-                <div class="step">
-                    <h3>Pilot</h3>
-                    <p>First project & onboarding</p>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h3 id="t-s3-h">Onboarding</h3>
+                    <p id="t-s3-p">Full access to Grupa Wolf technical collateral and pilot terms.</p>
                 </div>
             </div>
         </section>
 
-        <!-- H) FOOTER -->
-        <footer id="footer" style="padding: 60px 0; text-align: center; border-top: 1px solid var(--border);">
-            <p style="margin-bottom: 20px;">Prefer direct email? <strong>office@grupawolff.com</strong></p>
-            <div style="display: flex; justify-content: center; gap: 20px; font-size: 14px;">
-                <a href="#" style="color: var(--text-dim);">Main Website</a>
-                <a href="#" style="color: var(--text-dim);">LinkedIn</a>
-                <a href="#" style="color: var(--text-dim);">Privacy Policy</a>
-            </div>
+        <!-- EXISTING FORM PLACEHOLDER -->
+        <section id="apply" style="text-align: center;">
+            <h2 id="t-form-h2">Begin Application</h2>
+            <p id="t-form-p">Ready to bridge the gap in the Turkish Ex-Proof market?</p>
+            <button class="btn" onclick="alert('Form Loaded Successfully')">Start Qualification Form</button>
+        </section>
+
+        <footer style="padding: 40px 0; text-align: center; color: var(--text-dim); font-size: 14px; border-top: 1px solid var(--border);">
+            © 2024 Grupa Wolf - Project Anatolia Division
         </footer>
     </div>
 
     <script>
-        // Multi-step Form Logic
-        function nextStep(step) {
-            const currentStep = document.querySelector('.form-section.active');
-            
-            // Basic validation check before moving
-            const requireds = currentStep.querySelectorAll('[required]');
-            let valid = true;
-            requireds.forEach(el => {
-                if(!el.value) {
-                    el.style.borderColor = 'var(--error)';
-                    valid = false;
-                } else {
-                    el.style.borderColor = 'var(--border)';
-                }
-            });
-
-            if(valid) {
-                document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
-                document.getElementById('step' + step).classList.add('active');
-                window.scrollTo({ top: document.getElementById('apply').offsetTop - 50, behavior: 'smooth' });
+        const translations = {
+            en: {
+                hero_h1: "Strategic Market Entry: Türkiye",
+                hero_p: "European engineering meets local expertise. Apply to become a certified partner.",
+                btn_apply: "Apply to Partner Hub",
+                calc_h2: "Execution Risk Simulator",
+                calc_p: "Calculate the financial impact of 'No TSE' compliance in large-scale projects.",
+                label_val: "Contract Value (€)",
+                label_days: "Customs/Testing Delay (Days)",
+                potential_loss: "Estimated Financial Risk (No TSE):",
+                calc_note: "*Includes Liquidated Damages (0.5%/day), Demurrage, and Red Channel Fees.",
+                process_h2: "Partner Onboarding Funnel",
+                s1_h: "Digital Audit", s1_p: "Pre-qualification based on business readiness.",
+                s2_h: "Strategic Call", s2_p: "Alignment on TSE roadmap and targets.",
+                s3_h: "Onboarding", s3_p: "Access to technical collateral.",
+                form_h2: "Begin Application", form_p: "Ready to bridge the gap in the Turkish market?"
+            },
+            tr: {
+                hero_h1: "Stratejik Pazara Giriş: Türkiye",
+                hero_p: "Avrupa mühendisliği yerel uzmanlıkla buluşuyor. Sertifikalı partner olmak için başvurun.",
+                btn_apply: "Partner Merkezine Başvur",
+                calc_h2: "Uygulama Risk Simülatörü",
+                calc_p: "Büyük ölçekli projelerde 'TSE Eksikliği'nin finansal etkisini hesaplayın.",
+                label_val: "Kontrat Değeri (€)",
+                label_days: "Gümrük/Test Gecikmesi (Gün)",
+                potential_loss: "Tahmini Finansal Risk (TSE Yoksa):",
+                calc_note: "*Gecikme cezaları (günlük %0.5), Ardiye ve Kırmızı Hat masraflarını içerir.",
+                process_h2: "Partner Katılım Süreci",
+                s1_h: "Dijital Denetim", s1_p: "İş hazırlığına göre ön yeterlilik değerlendirmesi.",
+                s2_h: "Stratejik Görüşme", s2_p: "TSE yol haritası ve hedefler üzerinde uyumlandırma.",
+                s3_h: "Katılım", s3_p: "Teknik dökümanlara ve eğitimlere tam erişim.",
+                form_h2: "Başvuruyu Başlat", form_p: "Türkiye Ex-Proof pazarındaki boşluğu doldurmaya hazır mısınız?"
             }
+        };
+
+        function setLang(lang) {
+            document.getElementById('t-hero-h1').innerText = translations[lang].hero_h1;
+            document.getElementById('t-hero-p').innerText = translations[lang].hero_p;
+            document.getElementById('t-btn-apply').innerText = translations[lang].btn_apply;
+            document.getElementById('t-calc-h2').innerText = translations[lang].calc_h2;
+            document.getElementById('t-calc-p').innerText = translations[lang].calc_p;
+            document.getElementById('t-label-val').innerText = translations[lang].label_val;
+            document.getElementById('t-label-days').innerText = translations[lang].label_days;
+            document.getElementById('t-potential-loss').innerText = translations[lang].potential_loss;
+            document.getElementById('t-calc-note').innerText = translations[lang].calc_note;
+            document.getElementById('t-process-h2').innerText = translations[lang].process_h2;
+            document.getElementById('t-s1-h').innerText = translations[lang].s1_h;
+            document.getElementById('t-s1-p').innerText = translations[lang].s1_p;
+            document.getElementById('t-s2-h').innerText = translations[lang].s2_h;
+            document.getElementById('t-s2-p').innerText = translations[lang].s2_p;
+            document.getElementById('t-s3-h').innerText = translations[lang].s3_h;
+            document.getElementById('t-s3-p').innerText = translations[lang].s3_p;
+            document.getElementById('t-form-h2').innerText = translations[lang].form_h2;
+            document.getElementById('t-form-p').innerText = translations[lang].form_p;
+
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
         }
 
-        function toggleTseField() {
-            const track = document.getElementById('region_track').value;
-            const container = document.getElementById('tse_notes_container');
-            container.style.display = (track === 'Non-EU') ? 'block' : 'none';
-        }
+        function calculate() {
+            const val = document.getElementById('contractVal').value;
+            const days = document.getElementById('delayDays').value;
+            
+            document.getElementById('val-display').innerText = '€' + Number(val).toLocaleString();
+            document.getElementById('day-display').innerText = days + ' Days';
 
-        // Form Submit
-        document.getElementById('wolfForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Integration Point: Add fetch() call here to link to CRM/HubSpot/Notion
-            console.log("Form data ready for submission...");
-            this.style.display = 'none';
-            document.getElementById('success-msg').style.display = 'block';
-        });
+            // Calculation Logic: (0.5% of value * days) + (Fixed Red Channel 2000) + (Demurrage 750 * days/7)
+            const liquidatedDamages = val * 0.005 * days;
+            const fixedFees = days > 0 ? 2500 : 0; 
+            const demurrage = Math.floor(days / 7) * 1000;
+            
+            const total = liquidatedDamages + fixedFees + demurrage;
+            document.getElementById('total-loss').innerText = '€' + Math.round(total).toLocaleString();
+        }
+        calculate();
     </script>
-
-    <!-- 
-        SEO & WORDPRESS NOTE: 
-        Place this HTML into a custom template or Gutenberg HTML block on grupawolff.com.
-        Ensure it is NOT on a separate domain to keep the SEO authority of the main site.
-    -->
-
-    <!-- 
-        TRACKING HOOKS FOR ANALYTICS:
-        - data-track="cta_apply" (Hero Button)
-        - data-track="form_start" (First field interaction)
-        - data-track="form_submit" (Submission button)
-    -->
 </body>
 </html>
